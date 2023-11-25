@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 from app.schemas import UserInDB
 
@@ -13,7 +13,9 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
-    relationship()
+    created = Column(DateTime, default=datetime.utcnow)
+    updated = Column(DateTime, default=datetime.utcnow)
+    status = Column(Integer, nullable=False, default=1)
 
     def to_schema(self):
         return UserInDB(
@@ -22,5 +24,8 @@ class User(Base):
             email=self.email,
             hashed_password=self.hashed_password,
             is_active=self.is_active,
-            is_superuser=self.is_superuser
+            is_superuser=self.is_superuser,
+            created=self.created,
+            updated=self.updated,
+            status=self.status
         )
