@@ -11,5 +11,5 @@ class StorySessionPrompts(Base):
     user_id = ForeignKey("users.id")
     story_session_id = ForeignKey("story_sessions.id")
     prompt = Column(String, index=True)
-    sent = Column(DateTime, default=datetime.utcnow)
+    created = Column(DateTime, default=datetime.utcnow)
     status = Column(Integer, nullable=False, default=1)
