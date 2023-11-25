@@ -4,7 +4,7 @@ from app.schemas import UserInDB
 
 from app.db.base_class import Base
 
-class StorySessionPrompts(Base):
+class StorySessionPrompt(Base):
     __tablename__ = "story_session_prompts"
 
     id = Column(Integer, primary_key=True, index=True)
